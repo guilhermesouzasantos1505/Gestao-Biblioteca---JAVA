@@ -31,7 +31,7 @@ Antes de rodar o projeto em outra máquina, confirme que possui:
 ### 1. Clone ou copie o projeto
 
 ```bash
-git clone https://github.com/guilhermesouzasantos1505/Gest-o-Biblioteca---JAVA.git
+git clone https://github.com/guilhermesouzasantos1505/Gestao-Biblioteca---JAVA.git
 ```
 
 Ou copie a pasta do projeto para a máquina destino.
