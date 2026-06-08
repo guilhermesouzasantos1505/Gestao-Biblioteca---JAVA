@@ -1,0 +1,66 @@
+@startuml
+'Diagrama de classes (model + DAO)'
+package model {
+  class Autor {
+    +Integer idAutor
+    +String nome
+    +String nacionalidade
+  }
+  class Livro {
+    +Integer idLivro
+    +String titulo
+    +String isbn
+    +Integer anoPublicacao
+    +Integer quantidadeTotal
+    +Integer quantidadeDisponivel
+  }
+  class Usuario {
+    +Integer idUsuario
+    +String nome
+    +String email
+    +String telefone
+  }
+  class Emprestimo {
+    +Integer idEmprestimo
+    +Integer idUsuario
+    +Integer idLivro
+    +Date dataEmprestimo
+    +Date dataDevolucaoPrevista
+    +Date dataDevolucaoReal
+    +String status
+  }
+}
+
+package dao {
+  class AutorDAO {
+    +listarTodos(): List<Autor>
+    +salvar(Autor): void
+    +atualizar(Autor): void
+    +deletar(int): void
+  }
+  class LivroDAO {
+    +listarTodos(): List<Livro>
+    +salvar(Livro): void
+    +atualizar(Livro): void
+    +deletar(int): void
+  }
+  class UsuarioDAO {
+    +listarTodos(): List<Usuario>
+    +salvar(Usuario): void
+    +atualizar(Usuario): void
+    +deletar(int): void
+  }
+  class EmprestimoDAO {
+    +listarTodos(): List<Emprestimo>
+    +salvar(Emprestimo): void
+    +atualizar(Emprestimo): void
+    +deletar(int): void
+    +listarRelatorio(): List<Emprestimo>
+  }
+}
+
+Autor "1" -- "*" Livro : livre_autor
+Usuario "1" -- "*" Emprestimo
+Livro "1" -- "*" Emprestimo
+
+@enduml
