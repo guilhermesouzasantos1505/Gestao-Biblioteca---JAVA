@@ -1,30 +1,87 @@
-## Getting Started
+# Gestão de Biblioteca em Java
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este projeto é uma aplicação desktop em Java Swing para gerenciar livros, autores, usuários e empréstimos de uma biblioteca, com persistência em MySQL usando JDBC.
 
-## Folder Structure
+## O que o sistema faz
 
-The workspace contains two folders by default, where:
+- Cadastrar e listar livros
+- Cadastrar e listar autores
+- Cadastrar e listar usuários
+- Registrar empréstimos e devoluções
+- Exibir um relatório de empréstimos
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Estrutura do projeto
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- `src/`: código-fonte Java
+- `lib/`: dependências externas, como o driver JDBC do MySQL
+- `bin/`: arquivos compilados
+- `db/`: script SQL do banco
+- `docs/`: diagramas e documentação
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Requisitos
 
-## Build and Run
+Antes de rodar o projeto em outra máquina, confirme que possui:
 
-- Use `build.bat` to compile the project with Java 17 and include the MySQL JDBC driver.
-- Run the application with:
-	- `java -cp "lib\mysql-connector-java-8.0.30.jar;bin" com.gestao.biblioteca.view.MainFrame`
+- Java 17 ou superior
+- MySQL Server instalado e em execução
+- Git (opcional, apenas para clonar o projeto)
 
-## Database
+## Como rodar em outra máquina
 
-- Configure MySQL credentials in `DB_URL`, `DB_USER`, and `DB_PASSWORD` environment variables, or update `ConnectionFactory` directly.
-	- Default uses a local MySQL server.
+### 1. Clone ou copie o projeto
+
+```bash
+git clone https://github.com/guilhermesouzasantos1505/Gest-o-Biblioteca---JAVA.git
+```
+
+Ou copie a pasta do projeto para a máquina destino.
+
+### 2. Instale e configure o MySQL
+
+1. Instale o MySQL Server.
+2. Crie um usuário com acesso ao banco.
+3. Crie o banco com o script disponível em `db/schema.sql`.
+
+### 3. Configure as variáveis de ambiente
+
+O projeto utiliza as variáveis de ambiente abaixo para conectar ao banco:
+
+- `DB_URL`
+- `DB_USER`
+- `DB_PASSWORD`
+
+> Se preferir, você também pode ajustar a conexão diretamente no arquivo `src/com/gestao/biblioteca/util/ConnectionFactory.java`.
+
+### 4. Compile o projeto
+
+No Windows, execute:
+
+./build.bat
 
 
-## Dependency Management
+Isso compila a aplicação com o driver JDBC do MySQL.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+### 5. Execute a aplicação
+
+No Windows, use:
+
+```bat
+java -cp "lib\mysql-connector-java-8.0.30.jar;bin" com.gestao.biblioteca.view.MainFrame
+```
+
+Ou abra o arquivo "MainFrame.java" e o execute
+
+### 6. Verifique o banco
+
+O script em `db/schema.sql` já cria as tabelas e insere dados de exemplo para teste.
+
+## Observações importantes
+
+- O projeto foi desenvolvido para Java 17.
+- A porta padrão usada no exemplo é a porta 3307 do MySQL.
+- Se o MySQL estiver em outra porta ou com outra senha, ajuste `DB_URL` e `DB_PASSWORD`.
+
+## Documentação adicional
+
+A pasta `docs/` contém diagramas e o relatório do projeto.
+
